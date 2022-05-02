@@ -23,6 +23,6 @@ $data_chunk = $conn->query("SELECT * FROM news_dataset;");
 
 
 foreach($data_chunk as $record){
-  file_put_contents(strval($record['id']).'.txt', html_entity_decode($record['content']));
+  file_put_contents('txtdataset/'.strval($record['id']).'.txt', html_entity_decode($record['content']));
 }
 ?>
