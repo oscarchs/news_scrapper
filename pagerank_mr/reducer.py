@@ -2,43 +2,22 @@
 
 from sys import stdin
 
-index = {}
+pagerank = {}
+d = 0.85
 
 for line in stdin:
+  row = line.rstrip('\n').split()
+  nodes = row[0].split(':')
+  node_from = nodes[0]
+  node_to = nodes[1]
+  value = float(row[1])
+  if node_from in pagerank.keys():
+	  pagerank[node_from] += value
+  else:
+	  pagerank[node_from] = value
 
-        row = line.rstrip('\n').split()
-		print(row)
-        #neighbor = row[1].split(',')
-	
-        #index[row[0]] = [neighbor,float(row[2])]
+for page in pagerank:
+  pagerank[page] = (1.0-d) + d * pagerank[page]
+  print ('%s\t%s' % (page, pagerank[page]))
 
-
-#for doc_id in index:
-#	print ('%s\t%s' % (doc_id, index[doc_id]))
-	
-
-"""
-
-output = {}
-for doc_id in index:
-	size = len(index[doc_id][0])
-
-	for doc in index[doc_id][0]:
-		if doc in output:
-			output[doc] += index[doc_id][1]/size
-		else:
-			output[doc] = index[doc_id][1]/size	
-
-for doc_id in output:
-	output[doc_id] = output[doc_id]*0.85 +0.15
-
-
-#for doc_id in index:
-#	if doc_id in output:
-#		index[doc_id][1] = output[doc_id]
-		
-		
-for doc_id in output:
-	#postings = ','.join(index[doc_id][0])		
-	print ('%s\t%s' % (doc_id, output[doc_id]))
-"""
+  
