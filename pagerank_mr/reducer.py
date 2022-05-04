@@ -7,11 +7,17 @@ index = {}
 for line in stdin:
 
         row = line.rstrip('\n').split()
-
-        neighbor = row[1].split(',')
+		print(row)
+        #neighbor = row[1].split(',')
 	
-        index[row[0]] = [neighbor,float(row[2])]
+        #index[row[0]] = [neighbor,float(row[2])]
 
+
+#for doc_id in index:
+#	print ('%s\t%s' % (doc_id, index[doc_id]))
+	
+
+"""
 
 output = {}
 for doc_id in index:
@@ -35,3 +41,4 @@ for doc_id in output:
 for doc_id in output:
 	#postings = ','.join(index[doc_id][0])		
 	print ('%s\t%s' % (doc_id, output[doc_id]))
+"""

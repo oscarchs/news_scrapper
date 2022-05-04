@@ -1,0 +1,4 @@
+.idea/*
+/vendor/
+/src/cache.json
+/src/words/test.json
